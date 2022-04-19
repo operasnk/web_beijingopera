@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>京剧传承人-首页</title>
   <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/lib/bootstrap.css">
   <link rel="stylesheet" href="/assets/css/index.css">
   <link rel="stylesheet" href="/assets/fonts/iconfont.css">
 </head>
@@ -69,7 +70,7 @@
         </div>
         <div class="center">
           <div class="center2">
-            <a href="/login.html">
+            <a href="/login.html" id="backlogin">
               <img src="/assets/images/京剧图片/净.jpg" alt="">
               <div class="txt">
                   <h1>返回登录</h1>
@@ -89,7 +90,32 @@
   </div>
 
 
+  <!-- 导入 layui 的JS文件 -->
+  <script src="/assets/lib/layui/layui.all.js"></script>
+  <!-- 导入 jQuery -->
+  <script src="/assets/lib/jquery.js"></script>
   <!-- 导入自己封装的 baseAPI.js -->
   <script src="/assets/js/baseAPI.js"></script>
+  <script>
+    $(function() {
+      getUserInfo()
+      $('#backlogin').on('click', function() {
+          //清空本地存储中的 token
+        localStorage.removeItem('token')
+      })
+    })
+
+    function getUserInfo() {
+      $.ajax({
+        method: 'GET',
+        url: '/my/userinfo',
+        success: function(res) {
+          if (res.status !== 0) {
+            return layui.layer.msg('获取用户信息失败！')
+          }
+        }
+      })
+    }
+  </script>
 </body>
 </html>
