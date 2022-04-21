@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>京剧传承人-伴奏</title>
+    <link href="../assets/css/drum.css" rel="stylesheet" type="text/css">
+    <script src="../assets/lib/template-web.js"></script>
+    <script src="../assets/lib/jquery.js"></script>
+</head>
+
+<body style="background-color:antiquewhite">
+
+  <div class="indexe">
+    <a href="#">首页</a>
+    <a href="#">分类</a>
+    <a href="./register.html">登录</a>
+    <a href="#">联系我们</a>
+    <a class="backtop">返回顶部 ∧</a>
+  </div>
+
+  <ul id="obb-list"></ul>
+
+
+  <center>   
+      <div class="hid"></div>
+      <p></p>
+      <div id="Audio"></div>
+      <div id="Keyboard"></div>
+      <p></p>
+  </center>
+
+    <script id="script-config" src="../assets/js/drums/config.js"></script>
+    <script id="script-funcs" src="../assets/js/drums/keyboard_funcs.js"></script>
+    <script type="text/html" id="tpl-obb">
+      {{each data}}
+        <li>
+          <h3 style="font-family: '楷体'">{{$value.title}}</h3>
+          <span class=""><audio src="{{$value.o_url}}" controls></audio></span> 
+        </li>
+      {{/each}}
+    </script>
+   <!-- 导入自己封装的 baseAPI.js -->
+   <script src="../assets/js/baseAPI.js"></script>
+  <script src="../assets/js/drums/obbligate.js"></script>
+
+</body>
+
+</html>
